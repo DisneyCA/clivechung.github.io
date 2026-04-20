@@ -16,12 +16,12 @@
   </head>
 
   <body>
-    <table style="width:100%;max-width:850px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+    <table class="site-container" style="width:100%;max-width:850px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
       <tr style="padding:0px">
         <td style="padding:0px">
           <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-            <tr style="padding:0px">
-              <td style="padding:2.5%;width:63%;vertical-align:middle">
+            <tr class="hero-row" style="padding:0px">
+              <td class="hero-text-cell" style="padding:2.5%;width:63%;vertical-align:middle">
                 <p class="name" style="text-align: center;">
                   Clive Chung
                 </p>
@@ -36,7 +36,7 @@
                   <a href="https://scholar.google.com/citations?hl=en&user=Bl9R8A8AAAAJ&view_op=list_works&gmla=AEk_c1ttZIdu9yaU1Ze3ZIa8vfgs-nzsALve3Gsb2SRO-EpvXTKVl8Dx_JZyKtZ8wr9hTTvUyEIp8HmoScxq2dKX">Scholar</a>
                 </p>
               </td>
-              <td style="padding:2.5%;width:37%;max-width:37%">
+              <td class="hero-media-cell" style="padding:2.5%;width:37%;max-width:37%">
                 <div class="profile-image-wrap">
                   <img alt="profile photo" src="images/IMG_1803.jpg" class="hoverZoomLink profile-image-main">
                   <img alt="profile photo hover 1" src="images/IMG_1251.jpg" class="profile-image-hover profile-image-hover-1">
@@ -79,14 +79,14 @@
           <table style="width:100%;border:0px;border-spacing:0px 0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
 
 
-<tr>
-  <td style="padding:4px 16px 16px 16px;width:20%;vertical-align:middle">
+<tr class="project-row">
+  <td class="project-media-cell" style="padding:4px 16px 16px 16px;width:20%;vertical-align:middle">
     <video id="video-umi" width="220" autoplay loop muted playsinline preload="auto" style="display:block;max-width:220px;width:220px;height:auto;border:1px solid #ddd;border-radius:8px;">
       <source src="images/teaser-small.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
   </td>
-  <td style="padding:0px 8px 8px 8px;width:80%;vertical-align:middle">
+  <td class="project-content-cell" style="padding:0px 8px 8px 8px;width:80%;vertical-align:middle">
     <span class="papertitle">UMI-Underwater: Learning Underwater Manipulation without Underwater Teleoperation</span>
     <br>
     <a href="https://umi-under-water.github.io/">project page</a> /
@@ -99,14 +99,14 @@
 </tr>
 
 
-<tr>
-  <td style="padding:16px;width:20%;vertical-align:middle">
+<tr class="project-row">
+  <td class="project-media-cell" style="padding:16px;width:20%;vertical-align:middle">
     <video id="video-cable" width="220" autoplay loop muted playsinline preload="auto" style="display:block;max-width:220px;width:220px;height:auto;border:1px solid #ddd;border-radius:8px;">
       <source src="images/trimmed_cable.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
   </td>
-  <td style="padding:8px;width:80%;vertical-align:middle">
+  <td class="project-content-cell" style="padding:8px;width:80%;vertical-align:middle">
     <span class="papertitle">Long-Reach Manipulation for Assembly and Outfitting of Lunar Structures</span>
     <br>
     <em>International Conference on Space Robotics (iSpaRo25)</em>, 2025
@@ -122,8 +122,8 @@
   </td>
 </tr>
 
-<tr>
-  <td style="padding:16px;width:20%;vertical-align:middle;text-align:center;">
+<tr class="project-row">
+  <td class="project-media-cell" style="padding:16px;width:20%;vertical-align:middle;text-align:center;">
     <div id="cleaning-media-pair" style="display:inline-flex;align-items:center;gap:0;justify-content:center;">
       <video id="video-cleaning" width="160" autoplay loop muted playsinline preload="auto" style="display:block;width:auto;height:auto;max-width:220px;border:1px solid #ddd;border-radius:8px;">
         <source src="images/project.MP4" type="video/mp4">
@@ -132,7 +132,7 @@
       <img id="image-cleaning" src="images/image (21).png" alt="robotic cleaning still" style="display:block;height:auto;width:auto;border:1px solid #ddd;border-radius:8px;">
     </div>
   </td>
-  <td style="padding:8px;width:80%;vertical-align:middle">
+  <td class="project-content-cell" style="padding:8px;width:80%;vertical-align:middle">
     <span class="papertitle">Long-Reach Robotic Cleaning for Lunar Solar Arrays</span>
     <br>
     <em>International Conference on Space Robotics (iSpaRo25)</em>, 2025
@@ -152,11 +152,26 @@
       var reference = document.getElementById('video-cable') || document.getElementById('video-umi');
       var target = document.getElementById('video-cleaning');
       var companion = document.getElementById('image-cleaning');
+      var pair = document.getElementById('cleaning-media-pair');
       if (!reference || !target) return;
 
       var referenceHeight = reference.clientHeight;
       if (referenceHeight > 0) {
         var targetHeight = (referenceHeight * 1.25);
+
+        if (window.matchMedia('(max-width: 800px)').matches && pair && companion &&
+            target.videoWidth && target.videoHeight && companion.naturalWidth && companion.naturalHeight) {
+          var availableWidth = pair.parentElement ? pair.parentElement.clientWidth : 0;
+          var combinedAspect = (target.videoWidth / target.videoHeight) +
+                               (companion.naturalWidth / companion.naturalHeight);
+          if (availableWidth > 0 && combinedAspect > 0) {
+            var maxHeightToFit = availableWidth / combinedAspect;
+            if (targetHeight > maxHeightToFit) {
+              targetHeight = maxHeightToFit;
+            }
+          }
+        }
+
         target.style.height = targetHeight + 'px';
         target.style.width = 'auto';
         if (companion) {
@@ -168,9 +183,11 @@
 
     var umiVideo = document.getElementById('video-umi');
     var cableVideo = document.getElementById('video-cable');
+    var cleaningVideo = document.getElementById('video-cleaning');
 
     if (umiVideo) umiVideo.addEventListener('loadedmetadata', syncCleaningVideoHeight);
     if (cableVideo) cableVideo.addEventListener('loadedmetadata', syncCleaningVideoHeight);
+    if (cleaningVideo) cleaningVideo.addEventListener('loadedmetadata', syncCleaningVideoHeight);
 
     window.addEventListener('load', syncCleaningVideoHeight);
     window.addEventListener('resize', syncCleaningVideoHeight);
