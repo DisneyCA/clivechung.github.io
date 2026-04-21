@@ -197,6 +197,12 @@ span.highlight {
     border-radius: 10px;
 }
 
+.mobile-only {
+  display: none;
+}
+
+
+
 @media (max-width: 800px) {
   body {
     margin: 0;
@@ -212,6 +218,14 @@ span.highlight {
     display: block;
   }
 
+  .mobile-only {
+    display: block !important;
+  }
+
+  .desktop-only {
+    display: none !important;
+  }
+
   .hero-row > td,
   .project-row > td {
     display: block;
@@ -222,6 +236,11 @@ span.highlight {
 
   .hero-text-cell {
     padding: 16px 0 8px 0 !important;
+  }
+
+  .mobile-profile-wrap {
+    margin: 10px auto 14px auto;
+    max-width: 320px;
   }
 
   .hero-media-cell {
@@ -238,8 +257,13 @@ span.highlight {
     text-align: center;
   }
 
+  .project-meta-mobile {
+    text-align: left;
+    margin-bottom: 10px;
+  }
+
   .project-content-cell {
-    padding: 8px 0 20px 0 !important;
+    padding: 4px 0 20px 0 !important;
   }
 
   #video-umi,
