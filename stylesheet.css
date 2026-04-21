@@ -207,6 +207,25 @@ span.highlight {
   body {
     margin: 0;
     padding: 0 12px;
+    text-align: center;
+  }
+
+  p,
+  a,
+  td,
+  th,
+  tr,
+  strong,
+  em {
+    font-size: 12px !important;
+  }
+
+  .name,
+  h2,
+  .papertitle {
+    font-size: 22px !important;
+    font-weight: 700 !important;
+    text-align: center !important;
   }
 
   .site-container {
@@ -258,12 +277,13 @@ span.highlight {
   }
 
   .project-meta-mobile {
-    text-align: left;
+    text-align: center;
     margin-bottom: 10px;
   }
 
   .project-content-cell {
     padding: 4px 0 20px 0 !important;
+    text-align: center;
   }
 
   #video-umi,
