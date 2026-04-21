@@ -275,10 +275,32 @@ span.highlight {
   .mobile-profile-image {
     display: block;
     width: 100%;
-    max-width: 240px;
     height: auto;
-    margin: 0 auto;
     border-radius: 10px;
+    object-fit: cover;
+    object-position: center center;
+  }
+
+  .mobile-profile-wrap .profile-image-wrap {
+    aspect-ratio: auto;
+    overflow: visible;
+    max-width: 240px;
+  }
+
+  .mobile-profile-wrap .profile-image-wrap img {
+    position: static;
+    height: auto;
+    object-fit: contain;
+    object-position: center center;
+    transform: none !important;
+  }
+
+  .mobile-profile-wrap .profile-image-main {
+    transform: none !important;
+  }
+
+  .mobile-profile-wrap .profile-image-hover {
+    display: none !important;
   }
 
   .hero-media-cell {
@@ -303,14 +325,6 @@ span.highlight {
   .project-content-cell {
     padding: 4px 0 20px 0 !important;
     text-align: center;
-  }
-
-  .project-row-cleaning .project-meta-mobile,
-  .project-row-cleaning .project-content-cell,
-  .project-row-cleaning .project-content-cell p,
-  .project-row-cleaning .project-content-cell a,
-  .project-row-cleaning .project-content-cell em {
-    text-align: center !important;
   }
 
   #video-umi,
