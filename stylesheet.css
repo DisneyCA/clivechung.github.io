@@ -222,13 +222,14 @@ span.highlight {
   tr,
   strong,
   em {
-    font-size: 12px !important;
+    font-size: 11px !important;
+    line-height: 1.45;
   }
 
   .name,
   h2,
   .papertitle {
-    font-size: 22px !important;
+    font-size: 20px !important;
     font-weight: 700 !important;
     text-align: center !important;
   }
@@ -268,16 +269,29 @@ span.highlight {
 
   .mobile-profile-wrap {
     margin: 10px auto 14px auto;
-    max-width: 320px;
+    max-width: 240px;
+  }
+
+  .mobile-profile-wrap .profile-image-wrap {
+    aspect-ratio: auto;
+    overflow: visible;
+    max-width: 240px;
   }
 
   .mobile-profile-wrap .profile-image-wrap img {
+    position: static;
+    height: auto;
+    object-fit: contain;
     object-position: center center;
-    transform: scale(1.08);
+    transform: none !important;
   }
 
   .mobile-profile-wrap .profile-image-main {
-    transform: scale(1.08) !important;
+    transform: none !important;
+  }
+
+  .mobile-profile-wrap .profile-image-hover {
+    display: none !important;
   }
 
   .hero-media-cell {
