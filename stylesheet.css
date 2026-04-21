@@ -198,7 +198,7 @@ span.highlight {
 }
 
 .mobile-only {
-  display: none;
+  display: none !important;
 }
 
 
@@ -208,6 +208,11 @@ span.highlight {
     margin: 0;
     padding: 0 12px;
     text-align: center;
+  }
+
+  body * {
+    text-align: center !important;
+    font-size: 12px !important;
   }
 
   p,
@@ -241,8 +246,12 @@ span.highlight {
     display: block !important;
   }
 
-  .desktop-only {
+  .desktop-only,
+  td.desktop-only,
+  p.desktop-only,
+  div.desktop-only {
     display: none !important;
+    visibility: hidden !important;
   }
 
   .hero-row > td,
@@ -260,6 +269,15 @@ span.highlight {
   .mobile-profile-wrap {
     margin: 10px auto 14px auto;
     max-width: 320px;
+  }
+
+  .mobile-profile-wrap .profile-image-wrap img {
+    object-position: center center;
+    transform: scale(1.08);
+  }
+
+  .mobile-profile-wrap .profile-image-main {
+    transform: scale(1.08) !important;
   }
 
   .hero-media-cell {
